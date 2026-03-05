@@ -1,6 +1,7 @@
 // Require the necessary dependencies
 const mongoose = require('mongoose');
 const express = require('express');
+const authRoutes = require('./routes/auth');
 require('dotenv').config();
 
 // Set up Express app instance
@@ -19,3 +20,6 @@ mongoose.connect(process.env.MONGO_URI,)
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
+// Using the auth routes for handling authentication-related requests
+app.use('/api/auth',authRoutes);
