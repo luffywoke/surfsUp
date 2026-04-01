@@ -2,6 +2,7 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const authRoutes = require('./routes/auth');
+const middleware = require('./middleware/authMiddleware');
 require('dotenv').config();
 
 // Set up Express app instance
