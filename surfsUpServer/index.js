@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const authRoutes = require('./routes/auth');
-const middleware = require('./middleware/authMiddleware');
+const {verifyToken} = require('./middleware/authMiddleware');
 require('dotenv').config();
 
 // Set up Express app instance
@@ -24,3 +24,7 @@ app.listen(PORT, () => {
 
 // Using the auth routes for handling authentication-related requests
 app.use('/api/auth',authRoutes);
+
+app.get('/api/test', verifyToken, (req, res) => {
+    res.json({message: 'Testing token', user: req.user});
+});
