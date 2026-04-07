@@ -1,6 +1,7 @@
 // Require the necessary dependencies
 const mongoose = require('mongoose');
 const express = require('express');
+const cors = require('cors');
 const authRoutes = require('./routes/auth');
 const {verifyToken} = require('./middleware/authMiddleware');
 require('dotenv').config();
@@ -11,6 +12,7 @@ const PORT = 5000;
 
 // Adding middleware to read requests that have JSON data 
 app.use(express.json());
+app.use(cors());
 
 //Connect mongoose to MongoDB
 mongoose.connect(process.env.MONGO_URI,)
