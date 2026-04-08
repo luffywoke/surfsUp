@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function Login() {
+function Login({setIsLoggedIn}) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -19,6 +19,14 @@ function Login() {
             });
 
             const data = await response.json();
+            // Storing token to be able to use for later
+            if (response.ok && data.token) {
+                localStorage.setItem('token', data.token);
+                setIsLoggedIn(true);
+            }
+            else {
+                console.error('Login failed:', data.message || 'Unknown error');
+            }
             
         }
         catch (error) {
