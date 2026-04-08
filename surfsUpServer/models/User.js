@@ -17,12 +17,7 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required:true
-    },
-    
-    skillLevel: {
-        type: String,
-        required:false
-    },
+    }
 
 
     
