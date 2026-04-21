@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const authRoutes = require('./routes/auth');
 const profileRoutes = require('./routes/profile');
+const meetupRoutes = require('./routes/meetup');
 const {verifyToken} = require('./middleware/authMiddleware');
 require('dotenv').config();
 
@@ -25,6 +26,8 @@ mongoose.connect(process.env.MONGO_URI,)
 app.use('/api/auth',authRoutes);
 // Using the profile routes for handling profile-related requests
 app.use('/api/profile', profileRoutes);
+// Using the meetup routes for handling meetup-related requests
+app.use('/api/meetups', meetupRoutes);
 
 app.get('/api/test', verifyToken, (req, res) => {
     res.json({message: 'Testing token', user: req.user});
