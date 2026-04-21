@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
+import Meetups from './pages/Meetups';
+import CreateMeetup from './pages/CreateMeetup';
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(() => {
@@ -27,6 +29,8 @@ function App() {
                     <p>Welcome Back!</p>
                     <button onClick={handleLogout}>Logout</button>
                     <Link to="/profile">My Profile</Link>
+                    <Link to="/meetups">Meetups</Link>
+                    <Link to="/create-meetup">Create Meetup</Link>
                 </div>
             ) : (
                 <div>
@@ -39,6 +43,8 @@ function App() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} /> 
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/meetups" element={<Meetups />} />
+                <Route path="/create-meetup" element={<CreateMeetup />} />
             </Routes>
         </div>
     )
