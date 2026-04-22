@@ -5,6 +5,7 @@ const cors = require('cors');
 const authRoutes = require('./routes/auth');
 const profileRoutes = require('./routes/profile');
 const meetupRoutes = require('./routes/meetup');
+const listingRoutes = require('./routes/listing');
 const {verifyToken} = require('./middleware/authMiddleware');
 require('dotenv').config();
 
@@ -28,6 +29,8 @@ app.use('/api/auth',authRoutes);
 app.use('/api/profile', profileRoutes);
 // Using the meetup routes for handling meetup-related requests
 app.use('/api/meetups', meetupRoutes);
+// Using the listing routes for handling listing-related requests
+app.use('/api/listings', listingRoutes);
 
 app.get('/api/test', verifyToken, (req, res) => {
     res.json({message: 'Testing token', user: req.user});
