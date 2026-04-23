@@ -22,6 +22,20 @@ async function createListing(req, res) {
     }
 }
 
+// Retrieves all logged-in user's listings from the database
+async function getMyListings(req, res) {
+    try {
+        const userId = req.user.userId;
+        const listings = await Listing.find({ user: userId })
+            .populate('user', 'username email');
+
+        res.status(200).json(listings);
+    } catch (error) {
+        console.error('Error fetching listings:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+}
+
 
 // Retrieves all listings from the database
 async function getListings(req, res) {
@@ -74,4 +88,4 @@ async function markAsSold(req, res) {
     }
 }
 
-module.exports = { createListing, getListings, getListingById, markAsSold };
+module.exports = { createListing, getListings, getMyListings, getListingById, markAsSold };

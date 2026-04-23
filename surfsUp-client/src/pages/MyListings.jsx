@@ -1,15 +1,16 @@
 import {useState, useEffect} from 'react';
 
-function Listings() {
+
+function MyListings() {
     // Store all listings in an array
     const [listings, setListings] = useState([]);
 
-    // Fetch listings when page loads
+    // Fetch my listings when page loads
     useEffect(() => {
-        const fetchListings = async () => {
+        const fetchMyListings = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await fetch('http://localhost:5000/api/listings', {
+                const response = await fetch('http://localhost:5000/api/listings/my', {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
@@ -22,7 +23,7 @@ function Listings() {
                 console.error('Error fetching listings:', error);
             }
         };
-        fetchListings();
+        fetchMyListings();
     }, []);
 
     // Handle listing update
@@ -51,7 +52,7 @@ function Listings() {
 
     return (
         <div>
-            <h1>Surf Listings</h1>
+            <h1>My Surf Listings</h1>
             {listings.map((listing) => (
                 <div key={listing._id}>
                     <h2>{listing.title}</h2>
@@ -67,4 +68,4 @@ function Listings() {
     );
 }
 
-export default Listings;
+export default MyListings;

@@ -9,6 +9,7 @@ import Meetups from './pages/Meetups';
 import CreateMeetup from './pages/CreateMeetup';
 import Listings from './pages/Listings';
 import CreateListing from './pages/CreateListing';
+import MyListings from './pages/MyListings';
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(() => {
@@ -34,6 +35,7 @@ function App() {
                     <Link to="/meetups">Meetups</Link>
                     <Link to="/create-meetup">Create Meetup</Link>
                     <Link to="/listings">Listings</Link>
+                    <Link to="/my-listings">My Listings</Link>
                     <Link to="/create-listing">Create Listing</Link>
                 </div>
             ) : (
@@ -50,6 +52,7 @@ function App() {
                 <Route path="/meetups" element={<Meetups />} />
                 <Route path="/create-meetup" element={<CreateMeetup />} />
                 <Route path="/listings" element={<Listings />} />
+                <Route path="/my-listings" element={<MyListings />} />
                 <Route path="/create-listing" element={<CreateListing />} />
             </Routes>
         </div>
