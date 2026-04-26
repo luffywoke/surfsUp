@@ -10,6 +10,7 @@ import CreateMeetup from './pages/CreateMeetup';
 import Listings from './pages/Listings';
 import CreateListing from './pages/CreateListing';
 import MyListings from './pages/MyListings';
+import Navbar from './components/Navbar';
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(() => {
@@ -27,23 +28,8 @@ function App() {
     return (
         // Display different content based on login status
         <div>
-            {isLoggedIn ? (
-                <div>
-                    <p>Welcome Back!</p>
-                    <button onClick={handleLogout}>Logout</button>
-                    <Link to="/profile">My Profile</Link>
-                    <Link to="/meetups">Meetups</Link>
-                    <Link to="/create-meetup">Create Meetup</Link>
-                    <Link to="/listings">Listings</Link>
-                    <Link to="/my-listings">My Listings</Link>
-                    <Link to="/create-listing">Create Listing</Link>
-                </div>
-            ) : (
-                <div>
-                    <Link to="/register">Register</Link>
-                    <Link to="/login">Login</Link>
-                </div>
-            )}
+            <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
+        
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/register" element={<Register />} />
@@ -56,6 +42,7 @@ function App() {
                 <Route path="/create-listing" element={<CreateListing />} />
             </Routes>
         </div>
+       
     )
 }
 

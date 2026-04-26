@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 
 function Profile() {
-    const [profile, setProfile] = useState('');
+    const [profile, setProfile] = useState('null');
     const [skillLevel, setSkillLevel] = useState('');
     const [location, setLocation] = useState('');
     const [profilePhoto, setProfilePhoto] = useState('');
@@ -56,34 +56,43 @@ function Profile() {
     };
 
     return (
-        <div>
-            <h1>My Profile</h1>
-            <form onSubmit={handleUpdate}>
-                <input
-                    type="text"
-                    placeholder="Skill Level"
-                    value={skillLevel}
-                    onChange={(e) => setSkillLevel(e.target.value)}
-                />
-                <input
-                    type="text"
-                    placeholder="Location"
-                    value={location}
-                    onChange={(e) => setLocation(e.target.value)}
-                />
-                <input
-                    type="text"
-                    placeholder="Profile Photo URL"
-                    value={profilePhoto}
-                    onChange={(e) => setProfilePhoto(e.target.value)}
-                />
-                <textarea
-                    placeholder="Bio"
-                    value={bio}
-                    onChange={(e) => setBio(e.target.value)}
-                />
-                <button type="submit">Update Profile</button>
-            </form>
+        <div className="min-h-screen bg-amber-50 flex items-center justify-center">
+            <div className="bg-white rounded-2xl shadow-lg p-8 w-full max-w-md">
+                <h1 className="text-2xl font-bold mb-4 text-blue-900">My Profile</h1>
+                <form onSubmit={handleUpdate} className="flex flex-col gap-4">
+                    <input
+                        type="text"
+                        placeholder="Skill Level"
+                        value={skillLevel}
+                        onChange={(e) => setSkillLevel(e.target.value)}
+                        className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500"
+                    />
+                    <input
+                        type="text"
+                        placeholder="Location"
+                        value={location}
+                        onChange={(e) => setLocation(e.target.value)}
+                        className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500"
+                    />
+                    <input
+                        type="text"
+                        placeholder="Profile Photo URL"
+                        value={profilePhoto}
+                        onChange={(e) => setProfilePhoto(e.target.value)}
+                        className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500"
+                    />
+                    <textarea
+                        type="text"
+                        placeholder="Bio"
+                        value={bio}
+                        onChange={(e) => setBio(e.target.value)}
+                        className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500"
+                    />
+                    <button type="submit" className="bg-blue-900 text-white px-4 py-2 rounded-lg font-bold hover:bg-blue-700">
+                        Update Profile
+                    </button>
+                </form>
+            </div>
         </div>
     );
 }
