@@ -50,19 +50,26 @@ function Listings() {
     };
 
     return (
-        <div>
-            <h1>Surf Listings</h1>
-            {listings.map((listing) => (
-                <div key={listing._id}>
-                    <h2>{listing.title}</h2>
-                    <p>Price: ${listing.price.toFixed(2)}</p>
-                    <p>Condition: {listing.condition}</p>
-                    <p>Description: {listing.description}</p>
-                    {listing.photoURL && <img src={listing.photoURL} alt={listing.title} />}
-                    <p>{listing.isSold ? 'SOLD' : 'Available'}</p>
-                    <button onClick={() => handleUpdate(listing._id)}>Mark as Sold</button>
+        <div className="min-h-screen bg-amber-50 flex py-8 px-4">
+            <div className="gap-6 mb-8">
+                <h1 className="text-6xl font-bold mb-6 text-blue-900 text-center max-w-6xl mx-auto">Surf Meetups</h1>
+            </div>
+
+                <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {listings.map((listing) => (
+                        <div key={listing._id} className="bg-white rounded-2xl shadow-lg p-8">
+                            <h2 className="text-xl font-semibold mb-2">{listing.title}</h2>
+                            <p className="text-gray-600">Price: ${listing.price.toFixed(2)}</p>
+                            <p className="text-gray-600">Condition: {listing.condition}</p>
+                            <p className="text-gray-600">Description: {listing.description}</p>
+                            {listing.photoURL && <img src={listing.photoURL} alt={listing.title} />}
+                            <p className="text-lg font-bold">{listing.isSold ? 'SOLD' : 'Available'}</p>
+                            <button onClick={() => handleUpdate(listing._id)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                Mark as Sold
+                            </button>
+                        </div>
+                    ))}
                 </div>
-            ))}
         </div>
     );
 }

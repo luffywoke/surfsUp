@@ -34,41 +34,45 @@ function CreateListing() {
     }
 
     return (
-        <div>
-            <h1>Create Listing</h1>
-            <form onSubmit={handleSubmit}> 
-                <input
-                    type = "text"
-                    placeholder = "Title"
-                    value = {title}
-                    onChange={(e) => setTitle(e.target.value)}
-                />
-                <input
-                    type = 'number'
-                    placeholder = "Price"
-                    value = {price}
-                    onChange={(e) => setPrice(e.target.value)}
-                />
-                <input
-                    type = 'text'
-                    placeholder = "Condition"
-                    value = {condition}
-                    onChange={(e) => setCondition(e.target.value)}
-                />
-                <input
-                    type = 'text'
-                    placeholder = "Description"
-                    value = {description}
-                    onChange={(e) => setDescription(e.target.value)}
-                />
-                <input
-                    type = 'url'
-                    placeholder = "Photo URL"
-                    value = {photoURL}
-                    onChange={(e) => setPhotoURL(e.target.value)}
-                />
-                <button type="submit">Submit</button>
-            </form>
+        <div className="min-h-screen bg-amber-50 flex items-center justify-center">
+             {/* White card */}
+            <div className="bg-white rounded-2xl shadow-lg p-8 w-full max-w-md">
+                <h1 className="text-3xl font-bold text-blue-900 mb-6 text-center">Create Listing 🛒</h1>
+            
+                <form onSubmit={handleSubmit}> 
+                    <input
+                        type = "text"
+                        placeholder = "Title"
+                        value = {title}
+                        onChange={(e) => setTitle(e.target.value)}
+                    />
+                    <input
+                        type = 'number'
+                        placeholder = "Price"
+                        value = {price}
+                        onChange={(e) => setPrice(e.target.value)}
+                    />
+                    <input
+                        type = 'text'
+                        placeholder = "Condition"
+                        value = {condition}
+                        onChange={(e) => setCondition(e.target.value)}
+                    />
+                    <input
+                        type = 'text'
+                        placeholder = "Description"
+                        value = {description}
+                        onChange={(e) => setDescription(e.target.value)}
+                    />
+                    <input
+                        type = 'url'
+                        placeholder = "Photo URL"
+                        value = {photoURL}
+                        onChange={(e) => setPhotoURL(e.target.value)}
+                    />
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
         </div>
     )
 }

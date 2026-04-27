@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import {Routes, Route, Link} from 'react-router-dom';
+import {Routes, Route, Link, useNavigate} from 'react-router-dom';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
@@ -13,6 +13,8 @@ import MyListings from './pages/MyListings';
 import Navbar from './components/Navbar';
 
 function App() {
+    const navigate = useNavigate();
+
     const [isLoggedIn, setIsLoggedIn] = useState(() => {
         // Checking if token exists in localStorage
         return localStorage.getItem('token') !== null;
@@ -22,6 +24,7 @@ function App() {
         // Clear token from localStorage
         localStorage.removeItem('token');
         setIsLoggedIn(false);
+        navigate('/'); // Redirect to home page after logout
     }
     
 
